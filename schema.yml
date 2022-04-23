@@ -166,7 +166,7 @@ paths:
   /api/comments/:
     get:
       operationId: comments_list
-      description: ViewSet для комментариев
+      description: Для ответа на комментарий необходимо дополнительно передать его id в поле parent
       tags:
       - comments
       security:

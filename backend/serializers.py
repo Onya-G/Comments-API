@@ -6,11 +6,11 @@ from .models import Article, Comment
 
 class CommentSerializer(serializers.ModelSerializer):
     """Сериализатор для получения всего дерева комментариев"""
-    children = RecursiveField(many=True, required=False)
+    children = RecursiveField(many=True, required=False, read_only=True)
 
     class Meta:
         model = Comment
-        fields = ('id', 'article', 'text', 'author', 'created_at', 'children')
+        fields = ('id', 'article', 'text', 'author', 'created_at', 'children',)
 
 
 class ChildrenSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class ChildrenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'author', 'created_at', 'children')
+        fields = ('id', 'text', 'author', 'created_at', 'children',)
         depth = 1
 
 
@@ -28,7 +28,7 @@ class RootCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'author', 'created_at', 'children')
+        fields = ('id', 'text', 'author', 'created_at', 'children',)
 
 
 class ArticleSerializer(serializers.ModelSerializer):

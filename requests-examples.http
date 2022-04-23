@@ -1,0 +1,49 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# создание статьи
+POST  {{baseUrl}}/articles/
+Content-Type: application/json
+
+{
+  "text": "some text"
+}
+
+###
+
+# получение статьи
+GET {{baseUrl}}/articles/1
+Content-Type: application/json
+
+###
+
+# создание комментария к статье
+POST {{baseUrl}}/comments/
+Content-Type: application/json
+
+{
+  "article": 1,
+  "text": "some comment",
+  "author": "commentator"
+}
+
+###
+
+# создание комментария к комментарию
+POST {{baseUrl}}/comments/
+Content-Type: application/json
+
+{
+  "article": 1,
+  "parent": 1,
+  "text": "some comment",
+  "author": "commentator"
+}
+
+
+###
+
+# получить тред комментариев
+GET {{baseUrl}}/comments/1
+Content-Type: application/json
