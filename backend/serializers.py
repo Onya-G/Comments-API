@@ -10,7 +10,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'article', 'text', 'author', 'created_at', 'children',)
+        fields = ('id', 'article', 'text', 'author', 'created_at', 'parent', 'children',)
 
 
 class ChildrenSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class ChildrenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'author', 'created_at', 'children',)
+        fields = ('id', 'text', 'author', 'created_at', 'parent', 'children',)
         depth = 1
 
 
@@ -28,7 +28,7 @@ class RootCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'author', 'created_at', 'children',)
+        fields = ('id', 'text', 'author', 'created_at', 'parent', 'children',)
 
 
 class ArticleSerializer(serializers.ModelSerializer):
